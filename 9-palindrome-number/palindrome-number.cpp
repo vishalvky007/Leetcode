@@ -1,28 +1,19 @@
 class Solution {
 public:
 
-    int reverse(int num){
-        long rev = 0;
-        while(num > 0) {
-            rev *= 10;
-            rev += num % 10;
-            num /= 10;
-        }
-        return rev;
-    }
-
     bool isPalindrome(int x) {
         if(x < 0) {
             return false;
         }
-        else if(x == 0) {
-            return true;
+        
+        long reverse = 0;
+        int x_copy = x;
+
+        while(x>0) {
+            reverse = (reverse*10) + (x % 10);
+            x /= 10;
         }
-        else {
-            if(x == reverse(x)) {
-                return true;
-            }
-        }
-        return false;
+        
+        return reverse == x_copy;
     }
 };
